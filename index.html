@@ -1,0 +1,805 @@
+<!DOCTYPE html><html class="dark" lang="de"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>ATMOS // WETTER</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"error":"#ffb4ab","surface-container-lowest":"#0a0f14","surface-tint":"#abcae8","on-secondary-fixed":"#001d31","on-error":"#690005","on-primary-container":"#b5d4f2","tertiary":"#ffb77f","tertiary-fixed":"#ffdcc4","on-primary-fixed-variant":"#2b4963","on-secondary-container":"#9cb8d4","on-tertiary":"#4e2600","surface":"#0f141a","surface-bright":"#353a40","inverse-primary":"#43617c","on-tertiary-container":"#ffc599","surface-container-low":"#171c22","on-tertiary-fixed":"#2f1500","surface-variant":"#30353c","error-container":"#93000a","inverse-on-surface":"#2c3137","tertiary-fixed-dim":"#ffb77f","on-primary":"#12334b","secondary-fixed-dim":"#adcae6","inverse-surface":"#dee3eb","on-secondary-fixed-variant":"#2e4961","surface-dim":"#0f141a","background":"#0f141a","on-background":"#dee3eb","on-tertiary-fixed-variant":"#6f3900","secondary":"#adcae6","on-surface":"#dee3eb","surface-container":"#1b2026","outline-variant":"#42474d","tertiary-container":"#8a4800","primary":"#abcae8","outline":"#8d9197","primary-container":"#3e5c76","surface-container-high":"#252a31","on-error-container":"#ffdad6","primary-fixed":"#cce5ff","surface-container-highest":"#30353c","on-surface-variant":"#c3c7cd","secondary-fixed":"#cce5ff","on-secondary":"#153349","primary-fixed-dim":"#abcae8","on-primary-fixed":"#001d31","secondary-container":"#2e4961"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-desktop":"1.5rem","space-sm":"0.5rem","space-lg":"1.5rem","space-xl":"2.5rem","margin-desktop":"2.5rem","gutter":"1rem","space-xs":"0.25rem","space-md":"1rem","margin":"1rem"},"fontFamily":{"label-sm":["JetBrains Mono"],"label-md":["JetBrains Mono"],"body-md":["JetBrains Mono"],"headline-xl-mobile":["Space Grotesk"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"],"body-lg":["JetBrains Mono"]},"fontSize":{"label-sm":["9px",{"lineHeight":"12px","letterSpacing":"0.12em","fontWeight":"600"}],"label-md":["11px",{"lineHeight":"14px","letterSpacing":"0.08em","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"headline-xl-mobile":["40px",{"lineHeight":"44px","letterSpacing":"-0.03em","fontWeight":"500"}],"headline-xl":["56px",{"lineHeight":"60px","letterSpacing":"-0.04em","fontWeight":"500"}],"headline-md":["24px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"500"}],"headline-lg":["32px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"500"}],"body-lg":["15px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen"><header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30"><div class="h-16 w-full px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-space-sm"><div class="w-2 h-2 bg-primary shadow-[0_0_6px_#abcae8]"></div><span class="font-headline-md text-headline-md tracking-tight text-on-surface uppercase">ATMOS <span class="text-primary">//</span> WETTER</span><span class="font-label-sm text-label-sm text-on-surface-variant px-space-xs py-0.5 bg-surface-container-high border border-outline-variant/40 ml-space-xs">DE-RADAR v4.2</span></div><div class="relative flex items-center ml-space-md"><div class="flex items-center bg-surface-container-low border border-outline-variant/40 px-space-sm py-1.5 text-on-surface transition-all focus-within:border-primary focus-within:bg-surface-container"><span class="material-symbols-outlined text-[16px] text-outline mr-2">search</span><input type="text" placeholder="Stadt oder PLZ suchen..." class="bg-transparent border-none outline-none font-body-md text-body-md text-on-surface placeholder:text-outline w-56 md:w-72 focus:w-80 transition-all"><kbd class="font-label-sm text-label-sm text-outline px-1.5 py-0.5 bg-surface-container-highest border border-outline-variant/40 ml-2">⌘K</kbd></div></div></div><div class="flex items-center gap-space-md shrink-0"><div class="hidden lg:flex items-center bg-surface-container-low p-0.5 border border-outline-variant/30"><button class="px-space-sm py-0.5 font-label-sm text-label-sm bg-surface-bright text-on-surface border-r border-outline-variant/30" type="button">°C</button><button class="px-space-sm py-0.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface" type="button">°F</button><button class="px-space-sm py-0.5 font-label-sm text-label-sm bg-surface-bright text-on-surface border-l border-r border-outline-variant/30" type="button">KM/H</button><button class="px-space-sm py-0.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface" type="button">MBAR</button></div><button class="hidden sm:flex items-center gap-space-xs px-space-sm py-1.5 bg-surface-container-low border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:bg-surface-container" type="button"><span class="material-symbols-outlined text-[16px] text-primary">waves</span><span class="font-label-sm text-label-sm uppercase tracking-wider">AUDIO // RAIN 432HZ</span></button><nav class="flex items-center bg-surface-container-lowest border border-outline-variant/30" data-active-classes="bg-surface-container-highest text-on-surface border-b-2 border-primary font-semibold"><a aria-current="page" class="px-space-md py-1.5 transition-colors uppercase bg-surface-container-highest text-on-surface border-b-2 border-primary font-semibold" data-path="live-telemetry" href="#">Telemetry</a><a class="px-space-md py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors uppercase" data-path="doppler-radar" href="#">Radar</a><a class="px-space-md py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors uppercase" data-path="station-network" href="#">Stationen</a><a class="px-space-md py-1.5 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors uppercase" data-path="synoptic-archive" href="#">Archiv</a></nav><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="h-10 w-full px-margin-desktop bg-surface-container-lowest/90 backdrop-blur-md border-t border-outline-variant/20 flex items-center justify-between overflow-x-auto"><div class="flex items-center gap-space-xs shrink-0"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase pr-space-sm border-r border-outline-variant/30">Städte // Metropolen</span><button class="px-space-sm py-1 font-label-sm text-label-sm bg-surface-container-high text-on-surface border-l-2 border-primary flex items-center gap-space-xs"><span class="w-1 h-1 bg-primary"></span>BERLIN <span class="text-primary font-semibold">11.4°C</span></button><button class="px-space-sm py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low flex items-center gap-space-xs">HAMBURG <span class="text-outline font-semibold">9.8°C</span></button><button class="px-space-sm py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low flex items-center gap-space-xs">MÜNCHEN <span class="text-outline font-semibold">13.1°C</span></button><button class="px-space-sm py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low flex items-center gap-space-xs">KÖLN <span class="text-outline font-semibold">12.0°C</span></button><button class="px-space-sm py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low flex items-center gap-space-xs">FRANKFURT <span class="text-outline font-semibold">12.7°C</span></button><button class="px-space-sm py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low flex items-center gap-space-xs">STUTTGART <span class="text-outline font-semibold">14.2°C</span></button><button class="px-space-sm py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low flex items-center gap-space-xs">LEIPZIG <span class="text-outline font-semibold">10.9°C</span></button></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-4rem)]"><div class="pt-10"><div class="flex flex-col w-full pb-space-xl">
+<!-- Top Instrument Ribbon: Active Geo & Chrono Stream -->
+<section class="px-margin-desktop mb-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-1"><span class="w-1.5 h-1.5 bg-primary shadow-[0_0_6px_#abcae8]"></span><span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">METROPOLEN-TELEMETRIE</span></div>
+<div class="flex items-baseline gap-space-md">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tighter uppercase" id="activeCityHeading">BERLIN // MITTE</h1>
+<span class="font-label-sm text-label-sm text-outline tracking-wider" id="activeStationId">BERLIN</span>
+</div>
+</div>
+<!-- Quick Command Prompt & Micro-Switches -->
+<div class="flex items-center gap-space-md">
+
+<div class="flex items-center bg-surface-container-low p-1 border border-outline-variant/30">
+<button class="px-space-md py-1 font-label-sm text-label-sm bg-surface-bright text-on-surface transition-all" id="viewBtnCommute" onclick="switchMainTab('commute')">
+          PENDLER // URBAN
+        </button>
+<button class="px-space-md py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all" id="viewBtnDeep" onclick="switchMainTab('deep')">
+          ATMOSPHÄRE
+        </button>
+<button class="px-space-md py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all" id="viewBtnRadar" onclick="switchMainTab('radar')">
+          RADAR &amp; VEKTOR
+        </button>
+</div>
+</div>
+</section>
+<!-- 1. Horizontal City Carousel & Quick Slider -->
+<section class="px-margin-desktop mb-space-xl">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Fokus-Stadt Wähler (Tasten ← A / D →)</span>
+<span class="w-1 h-1 bg-outline"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">6 KERN-METROPOLEN</span>
+</div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<button class="w-6 h-6 flex items-center justify-center bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/40 text-on-surface" onclick="scrollCities(-1)">
+<span class="material-symbols-outlined text-[14px]">west</span>
+</button>
+<button class="w-6 h-6 flex items-center justify-center bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/40 text-on-surface" onclick="scrollCities(1)">
+<span class="material-symbols-outlined text-[14px]">east</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Carousel Container -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-space-xs overflow-x-auto pb-space-xs" id="cityTrack">
+<!-- Berlin (Active default) -->
+<button class="city-card group text-left p-space-md bg-surface-container-high border-t-2 border-primary border-r border-b border-l border-outline-variant/30 flex flex-col justify-between transition-all hover:bg-surface-container-highest cursor-pointer" id="cityCard-0" onclick="selectCity(0)">
+<div class="flex items-center justify-between w-full mb-space-md">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-wider">BER // 01</span>
+<span class="font-label-sm text-label-sm text-secondary">14:42</span>
+</div>
+<div class="mb-space-md">
+<div class="font-headline-md text-headline-md text-on-surface font-medium leading-none mb-1">14.2°</div>
+<div class="font-label-sm text-label-sm text-primary tracking-tight truncate">Berlin Mitte</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xs border-t border-outline-variant/20">
+<span>Kühler Dunst</span>
+<span class="text-tertiary">Δ +0.8°</span>
+</div>
+</button>
+<!-- München -->
+<button class="city-card group text-left p-space-md bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between transition-all hover:bg-surface-container-high cursor-pointer" id="cityCard-1" onclick="selectCity(1)">
+<div class="flex items-center justify-between w-full mb-space-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface tracking-wider">MUC // 02</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">14:42</span>
+</div>
+<div class="mb-space-md">
+<div class="font-headline-md text-headline-md text-on-surface font-medium leading-none mb-1">11.4°</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant tracking-tight truncate">München Isar</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xs border-t border-outline-variant/20">
+<span>Föhn / Böig</span>
+<span class="text-primary">Δ -1.2°</span>
+</div>
+</button>
+<!-- Hamburg -->
+<button class="city-card group text-left p-space-md bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between transition-all hover:bg-surface-container-high cursor-pointer" id="cityCard-2" onclick="selectCity(2)">
+<div class="flex items-center justify-between w-full mb-space-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface tracking-wider">HAM // 03</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">14:42</span>
+</div>
+<div class="mb-space-md">
+<div class="font-headline-md text-headline-md text-on-surface font-medium leading-none mb-1">9.8°</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant tracking-tight truncate">Hamburg Hafen</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xs border-t border-outline-variant/20">
+<span>Elbe Schauer</span>
+<span class="text-primary">Δ -2.1°</span>
+</div>
+</button>
+<!-- Köln -->
+<button class="city-card group text-left p-space-md bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between transition-all hover:bg-surface-container-high cursor-pointer" id="cityCard-3" onclick="selectCity(3)">
+<div class="flex items-center justify-between w-full mb-space-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface tracking-wider">CGN // 04</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">14:42</span>
+</div>
+<div class="mb-space-md">
+<div class="font-headline-md text-headline-md text-on-surface font-medium leading-none mb-1">15.0°</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant tracking-tight truncate">Köln Altstadt</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xs border-t border-outline-variant/20">
+<span>Bedeckt / Mild</span>
+<span class="text-tertiary">Δ +1.4°</span>
+</div>
+</button>
+<!-- Frankfurt -->
+<button class="city-card group text-left p-space-md bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between transition-all hover:bg-surface-container-high cursor-pointer" id="cityCard-4" onclick="selectCity(4)">
+<div class="flex items-center justify-between w-full mb-space-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface tracking-wider">FRA // 05</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">14:42</span>
+</div>
+<div class="mb-space-md">
+<div class="font-headline-md text-headline-md text-on-surface font-medium leading-none mb-1">16.3°</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant tracking-tight truncate">Frankfurt Main</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xs border-t border-outline-variant/20">
+<span>Aufklarend</span>
+<span class="text-tertiary">Δ +3.2°</span>
+</div>
+</button>
+<!-- Stuttgart -->
+<button class="city-card group text-left p-space-md bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between transition-all hover:bg-surface-container-high cursor-pointer" id="cityCard-5" onclick="selectCity(5)">
+<div class="flex items-center justify-between w-full mb-space-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface tracking-wider">STR // 06</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">14:42</span>
+</div>
+<div class="mb-space-md">
+<div class="font-headline-md text-headline-md text-on-surface font-medium leading-none mb-1">13.1°</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant tracking-tight truncate">Stuttgart Kessel</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-space-xs border-t border-outline-variant/20">
+<span>Wechselhaft</span>
+<span class="text-secondary">Δ 0.0°</span>
+</div>
+</button>
+</div>
+</section>
+<!-- 2. Focal City Hero Card & Deep Telemetry Grid -->
+<section class="px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-xl">
+<!-- Left Hero Module: Pure Braun Minimalist Readout -->
+<div class="lg:col-span-7 bg-surface-container-low border border-outline-variant/30 p-space-xl flex flex-col justify-between relative overflow-hidden">
+<!-- Decorative coordinate marks -->
+
+<!-- Top header line of the chassis -->
+<div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant uppercase mb-space-sm"><span class="w-1.5 h-1.5 bg-primary"></span><span>AKTUELLE LAGE</span><span class="text-outline">·</span><span class="text-outline" id="heroConditionEn">BEDECKT</span></div>
+<!-- Big Typographic Cluster -->
+<div class="my-space-md flex flex-col xl:flex-row xl:items-baseline gap-space-lg">
+<div class="flex items-baseline tracking-tighter">
+<span class="font-headline-xl text-[96px] xl:text-[124px] leading-none text-on-surface font-medium" id="heroTemp">14.2</span>
+<span class="font-headline-lg text-headline-lg text-primary ml-1">°C</span>
+</div>
+<div class="flex flex-col gap-1 border-l border-outline-variant/30 pl-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">GEFÜHLT</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold" id="heroFeelsLike">12.0°C</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">TAGESSCHWANKUNG</span>
+<span class="font-body-md text-body-md text-secondary" id="heroRange">MAX 17.4° // MIN 8.1°</span>
+</div>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="px-space-xs py-0.5 bg-surface-container-highest font-label-sm text-label-sm text-tertiary border border-outline-variant/30">
+                TAUPUNKT: <span id="heroDew">7.2°C</span>
+</span>
+</div>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface font-normal mt-space-sm" id="heroConditionDe">
+          Kühler Nieselregen mit dichter Schichtbewölkung über dem Spreebogen. Mäßiger Nordwestwind.
+        </p>
+</div>
+<!-- Live Mechanical Spec Table at Bottom of Hero Card -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs pt-space-lg mt-space-lg border-t border-outline-variant/20">
+<div class="bg-surface-container/60 p-space-sm border border-outline-variant/20">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Luftdruck</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold" id="heroPressure">1014.8 hPa</div>
+<div class="font-label-sm text-label-sm text-error flex items-center gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_down</span> -0.6 hPa/3h
+          </div>
+</div>
+<div class="bg-surface-container/60 p-space-sm border border-outline-variant/20">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Relative Feuchte</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold" id="heroHumidity">78 %</div>
+<div class="font-label-sm text-label-sm text-primary flex items-center gap-0.5 mt-0.5">
+<span class="w-1.5 h-1.5 bg-primary"></span> Sattdampf nah
+          </div>
+</div>
+<div class="bg-surface-container/60 p-space-sm border border-outline-variant/20">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Optische Sicht</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold" id="heroVisibility">9.8 km</div>
+
+</div>
+<div class="bg-surface-container/60 p-space-sm border border-outline-variant/20">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Vektor // Wind</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold" id="heroWind">NW 18 km/h</div>
+<div class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5 mt-0.5">
+            Böen bis 34 km/h
+          </div>
+</div>
+</div>
+</div>
+<!-- Right Telemetry Deck: Urban Navigation & Daylight Radar -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Section 3: Pendler-Index Card -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-lg">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20 mb-space-md">
+<span class="font-label-sm text-label-sm text-primary font-semibold tracking-wider flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">directions_bike</span>
+            PENDLER-INDEX // MOBILITÄTSPROGNOSE
+          </span>
+<span class="font-label-sm text-label-sm px-space-xs bg-surface-container-high border border-outline-variant/40 text-on-surface">
+            STATUS: 14:40 AKTUELL
+          </span>
+</div>
+<!-- 3-Segment Commuter Assessment -->
+<div class="space-y-space-sm font-label-md text-label-md">
+<!-- Cycling Index -->
+<div class="flex items-start justify-between p-space-sm bg-surface-container/50 border border-outline-variant/20">
+<div class="flex items-start gap-space-sm">
+<span class="w-1.5 h-1.5 bg-primary mt-1.5"></span>
+<div>
+<div class="text-on-surface font-semibold">Radverkehr // 7/10 Ausreichend</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Windweste empfohlen; Nässefilm ab 17:30 MESZ erwartet.</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">MODERAT</span>
+</div>
+<!-- S-Bahn & Regional -->
+<div class="flex items-start justify-between p-space-sm bg-surface-container/50 border border-outline-variant/20">
+<div class="flex items-start gap-space-sm">
+<span class="w-1.5 h-1.5 bg-secondary-fixed mt-1.5"></span>
+<div>
+<div class="text-on-surface font-semibold">S-Bahn &amp; Fernverkehr // Reibungsfrei</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Schienen trocken, Weichenheizungen inaktiv. Keine Sturmböen.</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-fixed font-semibold">NORMAL</span>
+</div>
+<!-- Umbrella Alert -->
+<div class="flex items-start justify-between p-space-sm bg-surface-container/50 border border-outline-variant/20">
+<div class="flex items-start gap-space-sm">
+<span class="w-1.5 h-1.5 bg-tertiary mt-1.5"></span>
+<div>
+<div class="text-on-surface font-semibold">Schirm-Indikator // Pflicht ab 16:15</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">Aufziehende Front von Potsdam Richtung Stadtmitte.</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">WARNUNG</span>
+</div>
+</div>
+<!-- AQI Meter + Atmospheric Purity Metric Bar -->
+<div class="grid grid-cols-2 gap-space-sm mt-space-md pt-space-sm border-t border-outline-variant/20">
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">AQI LUFTGÜTE</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">22 GUT</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 overflow-hidden">
+<div class="bg-primary h-full" style="width: 22%"></div>
+</div>
+<div class="font-label-sm text-label-sm text-outline mt-1">PM2.5: 6 µg/m³ · O₃: 41 µg</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">UV-INDEX</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">2.1 NIEDRIG</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 overflow-hidden">
+<div class="bg-secondary h-full" style="width: 21%"></div>
+</div>
+<div class="font-label-sm text-label-sm text-outline mt-1">Kein Schutz erforderlich</div>
+</div>
+</div>
+</div>
+<!-- Solar Daylight Arc & Horizon Sensor (SVG Gauge) -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex items-center justify-between">
+<div class="flex flex-col justify-between">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">SONNENVERLAUF // TAGESLICHT</div>
+<div class="font-headline-md text-headline-md text-on-surface mt-1">11H 48M</div>
+<div class="font-label-sm text-label-sm text-outline">Golden Hour: 19:42 MEZ</div>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-3 flex items-center gap-space-sm">
+<span>Aufgang: <strong class="text-on-surface">06:41</strong></span>
+<span class="text-outline">/</span>
+<span>Untergang: <strong class="text-on-surface">18:29</strong></span>
+</div>
+</div>
+<!-- Inline Arc Indicator under 2KB -->
+<div class="relative w-36 h-20 shrink-0">
+<svg class="w-full h-full stroke-current overflow-visible" viewBox="0 0 144 80">
+<!-- Background Arc -->
+<path d="M 12 70 A 60 60 0 0 1 132 70" fill="none" stroke="#30353c" stroke-dasharray="2 3" stroke-width="2"></path>
+<!-- Active Sun Progress Arc (~68% through the day) -->
+<path d="M 12 70 A 60 60 0 0 1 106 28" fill="none" stroke="#abcae8" stroke-width="2.5"></path>
+<!-- Sun point -->
+<circle class="fill-primary" cx="106" cy="28" r="4"></circle>
+<circle class="animate-pulse" cx="106" cy="28" fill="none" r="8" stroke="#abcae8" stroke-width="1"></circle>
+<!-- Horizon Base Line -->
+<line stroke="#42474d" stroke-width="1" x1="6" x2="138" y1="70" y2="70"></line>
+</svg>
+<span class="absolute bottom-0 left-1 font-label-sm text-[8px] text-outline">06:41</span>
+<span class="absolute bottom-0 right-1 font-label-sm text-[8px] text-outline">18:29</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. 24-Hour Precision Chrono-Graph & Precipitation Scrubber -->
+<section class="px-margin-desktop mb-space-xl">
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-space-md border-b border-outline-variant/20 gap-space-sm mb-space-md">
+<div>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-primary uppercase">
+<span class="material-symbols-outlined text-[16px]">show_chart</span>
+            CHRONO-HYETOGRAMM // 24-STUNDEN VERLAUF &amp; NIEDERSCHLAGSWAHRSCHEINLICHKEIT
+          </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">
+            Interaktiver Zeit-Scrubber: Maus bewegen für Stundendetails (Temperatur, Taupunkt, Niederschlag mm/h).
+          </div>
+</div>
+<!-- Scrubber Realtime Metric Tooltip / Status Display -->
+<div class="flex items-center gap-space-md px-space-md py-1 bg-surface-container-high border border-outline-variant/30" id="scrubTelemetryBox"><div class="font-label-sm text-label-sm text-outline"><span class="text-on-surface font-semibold" id="scrubTime">15:00</span></div><div class="font-label-sm text-label-sm text-outline"><span class="text-primary font-semibold" id="scrubTemp">14.1°C</span></div><div class="font-label-sm text-label-sm text-outline">REGEN: <span class="text-tertiary font-semibold" id="scrubRain">15%</span></div><div class="font-label-sm text-label-sm text-outline">WIND: <span class="text-secondary font-semibold" id="scrubWind">17 km/h</span></div></div>
+</div>
+<!-- Precision SVG Chart Canvas -->
+<div class="relative w-full h-56 bg-surface-container-lowest/50 border border-outline-variant/20 overflow-hidden select-none" id="graphContainer">
+<svg class="w-full h-full" id="meteoGraph" preserveAspectRatio="none" viewBox="0 0 1000 200">
+<defs>
+<linearGradient id="rainGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#abcae8" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#abcae8" stop-opacity="0.0"></stop>
+</linearGradient>
+<pattern height="40" id="gridPattern" patternUnits="userSpaceOnUse" width="41.66">
+<line stroke="rgba(141, 169, 196, 0.08)" stroke-width="1" x1="0" x2="41.66" y1="0" y2="0"></line>
+<line stroke="rgba(141, 169, 196, 0.08)" stroke-width="1" x1="0" x2="0" y1="0" y2="40"></line>
+</pattern>
+</defs>
+<!-- Grid Background -->
+<rect fill="url(#gridPattern)" height="200" width="1000"></rect>
+<!-- Precipitation Probability Bars (24h) -->
+<!-- Sample bars representing percentage probability -->
+<g class="fill-surface-container-high/80">
+<rect class="fill-primary-container/30" height="40" width="22" x="10" y="160"></rect>
+<rect class="fill-primary-container/30" height="50" width="22" x="52" y="150"></rect>
+<rect class="fill-primary-container/40" height="60" width="22" x="94" y="140"></rect>
+<rect class="fill-tertiary-container/50" height="90" width="22" x="135" y="110"></rect> <!-- Peak rain afternoon -->
+<rect class="fill-tertiary/40" height="110" width="22" x="177" y="90"></rect>
+<rect class="fill-tertiary/40" height="100" width="22" x="218" y="100"></rect>
+<rect class="fill-primary-container/50" height="80" width="22" x="260" y="120"></rect>
+<rect class="fill-primary-container/30" height="50" width="22" x="302" y="150"></rect>
+<rect class="fill-primary-container/20" height="30" width="22" x="344" y="170"></rect>
+<rect class="fill-primary-container/20" height="20" width="22" x="385" y="180"></rect>
+<rect class="fill-primary-container/20" height="20" width="22" x="427" y="180"></rect>
+<rect class="fill-primary-container/20" height="15" width="22" x="468" y="185"></rect>
+<rect class="fill-primary-container/20" height="15" width="22" x="510" y="185"></rect>
+<rect class="fill-primary-container/20" height="15" width="22" x="552" y="185"></rect>
+<rect class="fill-primary-container/20" height="20" width="22" x="593" y="180"></rect>
+<rect class="fill-primary-container/20" height="20" width="22" x="635" y="180"></rect>
+<rect class="fill-primary-container/20" height="25" width="22" x="677" y="175"></rect>
+<rect class="fill-primary-container/20" height="25" width="22" x="718" y="175"></rect>
+<rect class="fill-primary-container/30" height="30" width="22" x="760" y="170"></rect>
+<rect class="fill-primary-container/30" height="40" width="22" x="802" y="160"></rect>
+<rect class="fill-primary-container/40" height="45" width="22" x="843" y="155"></rect>
+<rect class="fill-primary-container/40" height="50" width="22" x="885" y="150"></rect>
+<rect class="fill-primary-container/30" height="40" width="22" x="927" y="160"></rect>
+<rect class="fill-primary-container/20" height="30" width="22" x="968" y="170"></rect>
+</g>
+<!-- Temperature Spline Curve -->
+<path d="M 21 68 Q 150 40 300 70 T 600 130 T 900 120 L 990 110 L 990 200 L 21 200 Z" fill="url(#rainGradient)" id="tempSplineArea"></path>
+<path d="M 21 68 Q 150 40 300 70 T 600 130 T 900 120 L 990 110" fill="none" id="tempSpline" stroke="#abcae8" stroke-width="2.5"></path>
+<!-- Scrubber Indicator Line (moves with JS pointer) -->
+<line id="scrubLine" opacity="0.8" stroke="#f8f9fa" stroke-dasharray="3 3" stroke-width="1.5" x1="150" x2="150" y1="0" y2="200"></line>
+<circle cx="150" cy="40" fill="#f8f9fa" id="scrubMarker" r="4.5" stroke="#0f141a" stroke-width="1.5"></circle>
+</svg>
+<!-- Horizontal X-Axis Timeline Markers -->
+<div class="absolute bottom-1 left-0 w-full px-3 flex justify-between font-label-sm text-[9px] text-outline pointer-events-none">
+<span>08:00</span>
+<span>11:00</span>
+<span class="text-primary font-semibold">14:00 (JETZT)</span>
+<span>17:00</span>
+<span>20:00</span>
+<span>23:00</span>
+<span>02:00</span>
+<span>05:00</span>
+<span>07:00</span>
+</div>
+</div>
+<!-- Telemetry Sub-Legend -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm mt-space-sm pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-space-md">
+<span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-primary"></span> TEMPERATURKURVE (°C)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-tertiary/40"></span> REGENWAHRSCHEINLICHKEIT (% PRO H)</span>
+</div>
+<div class="text-outline uppercase">
+          MESSINTERVALL: 10 MINUTEN // DWD RADOLAN-FUSION
+        </div>
+</div>
+</div>
+</section>
+<!-- 5. 7-Day Synoptic Outlook & Extended Bar Thermometers -->
+<section class="px-margin-desktop mb-space-xl">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant uppercase">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+<span>SYNOPTISCHE 7-TAGE-PROGNOSE // ENSEMBLE-MITTEL</span>
+</div>
+<div class="font-label-sm text-label-sm text-outline">
+        MODELL: ECMWF IFS / ICON-EU 00Z
+      </div>
+</div>
+<!-- 7 Docked Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-space-xs">
+<!-- Day 1 (Today) -->
+<div class="bg-surface-container-high border-t-2 border-primary border-r border-b border-l border-outline-variant/30 p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm mb-space-xs">
+<span class="text-primary font-bold">HEUTE</span>
+<span class="text-on-surface">14. OKT</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-md">Dunst / Niesel</div>
+<div class="flex items-center justify-center my-space-sm text-primary">
+<span class="material-symbols-outlined text-[32px]">rainy</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-semibold">17°</span>
+<span class="text-outline">8°</span>
+</div>
+<!-- Bar Thermometer Range: min 8, max 17 (scaled 0-25°C) -->
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-none relative overflow-hidden mb-space-xs">
+<div class="absolute h-full bg-primary" style="left: 32%; width: 36%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span>Regen</span>
+<span class="text-tertiary">65%</span>
+</div>
+</div>
+</div>
+<!-- Day 2 -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm mb-space-xs">
+<span class="text-on-surface font-semibold">DI</span>
+<span class="text-outline">15. OKT</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-md">Klar / Herbst</div>
+<div class="flex items-center justify-center my-space-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">partly_cloudy_day</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-semibold">15°</span>
+<span class="text-outline">6°</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-none relative overflow-hidden mb-space-xs">
+<div class="absolute h-full bg-secondary" style="left: 24%; width: 36%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span>Regen</span>
+<span class="text-on-surface-variant">10%</span>
+</div>
+</div>
+</div>
+<!-- Day 3 -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm mb-space-xs">
+<span class="text-on-surface font-semibold">MI</span>
+<span class="text-outline">16. OKT</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-md">Sonne / Mild</div>
+<div class="flex items-center justify-center my-space-sm text-tertiary">
+<span class="material-symbols-outlined text-[32px]">sunny</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-semibold">18°</span>
+<span class="text-outline">7°</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-none relative overflow-hidden mb-space-xs">
+<div class="absolute h-full bg-tertiary" style="left: 28%; width: 44%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span>Regen</span>
+<span class="text-on-surface-variant">0%</span>
+</div>
+</div>
+</div>
+<!-- Day 4 -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm mb-space-xs">
+<span class="text-on-surface font-semibold">DO</span>
+<span class="text-outline">17. OKT</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-md">Böig / Wolkig</div>
+<div class="flex items-center justify-center my-space-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">air</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-semibold">14°</span>
+<span class="text-outline">5°</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-none relative overflow-hidden mb-space-xs">
+<div class="absolute h-full bg-secondary" style="left: 20%; width: 36%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span>Regen</span>
+<span class="text-on-surface-variant">25%</span>
+</div>
+</div>
+</div>
+<!-- Day 5 -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm mb-space-xs">
+<span class="text-on-surface font-semibold">FR</span>
+<span class="text-outline">18. OKT</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-md">Dauerregen</div>
+<div class="flex items-center justify-center my-space-sm text-primary">
+<span class="material-symbols-outlined text-[32px]">weather_mix</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-semibold">11°</span>
+<span class="text-outline">7°</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-none relative overflow-hidden mb-space-xs">
+<div class="absolute h-full bg-primary" style="left: 28%; width: 16%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span>Regen</span>
+<span class="text-tertiary">85%</span>
+</div>
+</div>
+</div>
+<!-- Day 6 -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm mb-space-xs">
+<span class="text-on-surface font-semibold">SA</span>
+<span class="text-outline">19. OKT</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-md">Kaltfront</div>
+<div class="flex items-center justify-center my-space-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]">cloudy_snowing</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-semibold">9°</span>
+<span class="text-outline">3°</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-none relative overflow-hidden mb-space-xs">
+<div class="absolute h-full bg-secondary" style="left: 12%; width: 24%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span>Regen</span>
+<span class="text-on-surface-variant">40%</span>
+</div>
+</div>
+</div>
+<!-- Day 7 -->
+<div class="bg-surface-container-low border border-outline-variant/30 p-space-md flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div>
+<div class="flex items-center justify-between font-label-sm text-label-sm mb-space-xs">
+<span class="text-on-surface font-semibold">SO</span>
+<span class="text-outline">20. OKT</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-md">Herbstsonne</div>
+<div class="flex items-center justify-center my-space-sm text-tertiary">
+<span class="material-symbols-outlined text-[32px]">wb_sunny</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline justify-between font-label-md text-label-md mb-1">
+<span class="text-on-surface font-semibold">12°</span>
+<span class="text-outline">4°</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-1.5 rounded-none relative overflow-hidden mb-space-xs">
+<div class="absolute h-full bg-tertiary" style="left: 16%; width: 32%;"></div>
+</div>
+<div class="flex justify-between items-center font-label-sm text-label-sm text-outline">
+<span>Regen</span>
+<span class="text-on-surface-variant">5%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Script Harness for City Selection, Scrubber, & Keyboard Hotkeys -->
+<script>
+    const cityDatabase = [
+      {
+        id: "BER",
+        heading: "BERLIN // MITTE",
+        station: "STN: EDDB-10382 (DWD RADAR NORD-OST)",
+        temp: "14.2",
+        feels: "12.0°C",
+        range: "MAX 17.4° // MIN 8.1°",
+        dew: "7.2°C",
+        conditionDe: "Kühler Nieselregen mit dichter Schichtbewölkung über dem Spreebogen. Mäßiger Nordwestwind.",
+        conditionEn: "CRISP OVERCAST // HYGROMETRIC PEAK",
+        pressure: "1014.8 hPa",
+        humidity: "78 %",
+        visibility: "9.8 km",
+        wind: "NW 18 km/h"
+      },
+      {
+        id: "MUC",
+        heading: "MÜNCHEN // ISAR",
+        station: "STN: EDDM-10865 (DWD RADAR SÜD-ALPIN)",
+        temp: "11.4",
+        feels: "9.8°C",
+        range: "MAX 13.8° // MIN 4.2°",
+        dew: "3.5°C",
+        conditionDe: "Kräftiger Föhnwind mit aufziehender Regenfront aus den Alpen. Vereinzelte Starkböen im Stadtgebiet.",
+        conditionEn: "FÖHN ADVECTION // GUST CONVERGENCE",
+        pressure: "1009.2 hPa",
+        humidity: "62 %",
+        visibility: "24.0 km",
+        wind: "S 36 km/h"
+      },
+      {
+        id: "HAM",
+        heading: "HAMBURG // HAFEN",
+        station: "STN: EDDH-10147 (DWD RADAR NORDSEEKÜSTE)",
+        temp: "9.8",
+        feels: "6.5°C",
+        range: "MAX 12.0° // MIN 7.1°",
+        dew: "6.0°C",
+        conditionDe: "Maritime Schauer und Elbe-Küstendunst. Typisches Hamburger Schmuddelwetter mit Windstärke 5.",
+        conditionEn: "MARITIME DRIFT // GALE WARN STAGE 1",
+        pressure: "1018.4 hPa",
+        humidity: "89 %",
+        visibility: "6.2 km",
+        wind: "WNW 28 km/h"
+      },
+      {
+        id: "CGN",
+        heading: "KÖLN // RHEINTAL",
+        station: "STN: EDDK-10513 (DWD RADAR WEST)",
+        temp: "15.0",
+        feels: "14.8°C",
+        range: "MAX 18.2° // MIN 10.4°",
+        dew: "10.1°C",
+        conditionDe: "Ruhiges Rheintal-Klima. Geschlossene Wolkendecke bei angenehm milder Temperatur.",
+        conditionEn: "OVERCAST STRATUS // MILD STABILITY",
+        pressure: "1016.1 hPa",
+        humidity: "72 %",
+        visibility: "12.5 km",
+        wind: "SW 12 km/h"
+      },
+      {
+        id: "FRA",
+        heading: "FRANKFURT // MAIN",
+        station: "STN: EDDF-10637 (DWD RADAR HESSEN)",
+        temp: "16.3",
+        feels: "16.0°C",
+        range: "MAX 19.1° // MIN 8.9°",
+        dew: "6.8°C",
+        conditionDe: "Aufklarender Himmel über den Hochhäusern. Spätsommerliche thermische Bedingungen.",
+        conditionEn: "CLEAR VISTA // THERMAL ASCENT",
+        pressure: "1015.4 hPa",
+        humidity: "54 %",
+        visibility: "30.0 km",
+        wind: "W 14 km/h"
+      },
+      {
+        id: "STR",
+        heading: "STUTTGART // KESSEL",
+        station: "STN: EDDS-10738 (DWD RADAR SÜDWEST)",
+        temp: "13.1",
+        feels: "12.4°C",
+        range: "MAX 16.0° // MIN 6.8°",
+        dew: "5.4°C",
+        conditionDe: "Typische Inversionslage im Kessel mit mäßiger Zirkulation und aufgelockerter Quellbewölkung.",
+        conditionEn: "BASIN INVERSION // LOCAL CALM",
+        pressure: "1013.9 hPa",
+        humidity: "68 %",
+        visibility: "14.0 km",
+        wind: "NO 8 km/h"
+      }
+    ];
+
+    let currentCityIdx = 0;
+
+    function selectCity(idx) {
+      currentCityIdx = idx;
+      const data = cityDatabase[idx];
+
+      // Update hero text
+      document.getElementById('activeCityHeading').textContent = data.heading;
+      document.getElementById('activeStationId').textContent = data.station;
+      document.getElementById('heroTemp').textContent = data.temp;
+      document.getElementById('heroFeelsLike').textContent = data.feels;
+      document.getElementById('heroRange').textContent = data.range;
+      document.getElementById('heroDew').textContent = data.dew;
+      document.getElementById('heroConditionDe').textContent = data.conditionDe;
+      document.getElementById('heroConditionEn').textContent = data.conditionEn;
+      document.getElementById('heroPressure').textContent = data.pressure;
+      document.getElementById('heroHumidity').textContent = data.humidity;
+      document.getElementById('heroVisibility').textContent = data.visibility;
+      document.getElementById('heroWind').textContent = data.wind;
+
+      // Update active card border style
+      for (let i = 0; i < 6; i++) {
+        const card = document.getElementById(`cityCard-${i}`);
+        if (i === idx) {
+          card.className = "city-card group text-left p-space-md bg-surface-container-high border-t-2 border-primary border-r border-b border-l border-outline-variant/30 flex flex-col justify-between transition-all cursor-pointer";
+        } else {
+          card.className = "city-card group text-left p-space-md bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between transition-all hover:bg-surface-container-high cursor-pointer";
+        }
+      }
+    }
+
+    function scrollCities(delta) {
+      let next = currentCityIdx + delta;
+      if (next < 0) next = cityDatabase.length - 1;
+      if (next >= cityDatabase.length) next = 0;
+      selectCity(next);
+    }
+
+    // Keyboard navigation (A / D and Left / Right arrows)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        scrollCities(1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        scrollCities(-1);
+      }
+    });
+
+    // 24H Graph Scrubber interaction
+    const container = document.getElementById('graphContainer');
+    const scrubLine = document.getElementById('scrubLine');
+    const scrubMarker = document.getElementById('scrubMarker');
+    const timeDisplay = document.getElementById('scrubTime');
+    const tempDisplay = document.getElementById('scrubTemp');
+    const rainDisplay = document.getElementById('scrubRain');
+    const windDisplay = document.getElementById('scrubWind');
+
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const xRel = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+      const ratio = xRel / rect.width;
+      const svgX = ratio * 1000;
+
+      // Move vertical line & marker
+      scrubLine.setAttribute('x1', svgX);
+      scrubLine.setAttribute('x2', svgX);
+      scrubMarker.setAttribute('cx', svgX);
+
+      // Interpolate Y based on simulated spline formula
+      const simulatedY = 120 - Math.sin(ratio * Math.PI * 1.5) * 60;
+      scrubMarker.setAttribute('cy', simulatedY);
+
+      // Compute time marker
+      const totalMinutes = Math.floor(ratio * 24 * 60) + 8 * 60; // start at 08:00
+      const hours = Math.floor((totalMinutes / 60) % 24).toString().padStart(2, '0');
+      const mins = Math.floor((totalMinutes % 60) / 10) * 10;
+      const formattedMins = mins.toString().padStart(2, '0');
+      timeDisplay.textContent = `${hours}:${formattedMins}`;
+
+      // Compute Temp & Rain
+      const tempVal = (17.5 - ratio * 8.5 + (Math.sin(ratio * 6) * 1.5)).toFixed(1);
+      tempDisplay.textContent = `${tempVal}°C`;
+
+      const rainProb = Math.min(95, Math.max(5, Math.floor(Math.sin(ratio * Math.PI) * 75 + 10)));
+      const rainMm = (rainProb * 0.02).toFixed(1);
+      rainDisplay.textContent = `${rainProb}% (${rainMm} mm)`;
+
+      // Wind estimation
+      const windKmh = Math.floor(14 + ratio * 12);
+      windDisplay.textContent = `NW ${windKmh} km/h`;
+    });
+
+    function switchMainTab(mode) {
+      const btnCommute = document.getElementById('viewBtnCommute');
+      const btnDeep = document.getElementById('viewBtnDeep');
+      const btnRadar = document.getElementById('viewBtnRadar');
+
+      [btnCommute, btnDeep, btnRadar].forEach(btn => {
+        btn.className = "px-space-md py-1 font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-all";
+      });
+
+      if (mode === 'commute') {
+        btnCommute.className = "px-space-md py-1 font-label-sm text-label-sm bg-surface-bright text-on-surface transition-all";
+      } else if (mode === 'deep') {
+        btnDeep.className = "px-space-md py-1 font-label-sm text-label-sm bg-surface-bright text-on-surface transition-all";
+      } else if (mode === 'radar') {
+        btnRadar.className = "px-space-md py-1 font-label-sm text-label-sm bg-surface-bright text-on-surface transition-all";
+      }
+    }
+  </script>
+</div></div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-sm px-margin-desktop"><div class="w-full flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex flex-wrap items-center gap-space-md font-label-sm text-label-sm"><span class="text-on-surface-variant flex items-center gap-1"><span class="w-1.5 h-1.5 bg-primary"></span>DWD COMPLIANT TELEMETRY</span><span class="text-outline-variant">/</span><span class="text-on-surface-variant">AQI // <strong class="text-primary font-semibold">28 GUT (EUR-1)</strong></span><span class="text-outline-variant">/</span><span class="text-on-surface-variant">POLLEN // GRAS: GERING</span><span class="text-outline-variant">/</span><span class="text-on-surface-variant">UV // 2.1 NIEDRIG</span></div><div class="flex items-center gap-space-lg font-label-sm text-label-sm"><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="text-outline">RADAR BEREICH:</span><button class="text-on-surface hover:text-primary transition-colors underline decoration-outline-variant">NORD</button><button class="text-on-surface hover:text-primary transition-colors underline decoration-outline-variant">SÜD</button><button class="text-on-surface hover:text-primary transition-colors underline decoration-outline-variant">WEST</button><button class="text-on-surface hover:text-primary transition-colors underline decoration-outline-variant">OST</button></div><span class="text-outline-variant">|</span><span class="text-outline uppercase">SYS-TICK: 0.1 SEC</span></div></div></footer>
+
+</body></html>
